@@ -1,0 +1,19 @@
+services:
+  fastapi-app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=development
+    networks:
+      - custom_network
+    deploy:
+      resources:
+        limits:
+          cpus: '1'    # Limit to 50% of a single CPU core
+          memory: '2048M'  # Limit to 512MB of RAM
+
+networks:
+  custom_network:
+    external: true
