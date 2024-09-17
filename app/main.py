@@ -13,17 +13,7 @@ def sync_sync():
     return {"message": "Sync endpoint doing sync job"}
 
 
-# 2. Sync endpoint doing async job
-@app.get("/sync-async")
-def sync_async():
-    async def async_job():
-        await asyncio.sleep(2)  # Simulate async job
-
-    asyncio.run(async_job())  # Run async job in sync context
-    return {"message": "Sync endpoint doing async job"}
-
-
-# 3. Async endpoint doing sync job
+# 2. Async endpoint doing sync job
 @app.get("/async-sync")
 async def async_sync():
     def sync_job():
@@ -33,7 +23,7 @@ async def async_sync():
     return {"message": "Async endpoint doing sync job"}
 
 
-# 4. Async endpoint doing async job
+# 3. Async endpoint doing async job
 @app.get("/async-async")
 async def async_async():
     await asyncio.sleep(2)  # Simulate async job
