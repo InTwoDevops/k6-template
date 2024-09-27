@@ -16,10 +16,7 @@ def sync_sync():
 # 2. Async endpoint doing sync job
 @app.get("/async-sync")
 async def async_sync():
-    def sync_job():
-        time.sleep(2)  # Simulate sync job
-
-    await asyncio.to_thread(sync_job)  # Run sync job in a thread
+    time.sleep(2)  # Simulate sync job
     return {"message": "Async endpoint doing sync job"}
 
 
